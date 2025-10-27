@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congo Terre de L'Art - Les 7 Grands Arts</title>
+    <!-- Chargement de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuration de la police Inter -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7; /* Gris clair de fond */
+        }
+        /* Styles pour masquer la barre de défilement (optionnel, pour une meilleure esthétique) */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <!-- En-tête / Barre de Navigation Fixe -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <!-- Logo - Couleurs Noir et Jaune -->
+            <div class="text-2xl font-extrabold text-gray-900 flex items-center">
+                <!-- Icône d'art africain stylisé -->
+                <svg class="w-6 h-6 mr-2 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.878v4.244a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Congo <span class="text-yellow-500 ml-1">Terre de L'Art</span>
+            </div>
+            <!-- Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#accueil" class="text-gray-600 hover:text-yellow-500 transition duration-150 font-medium">Accueil</a>
+                <a href="#arts" class="text-gray-600 hover:text-yellow-500 transition duration-150 font-medium">Les Arts</a>
+                <!-- Bouton Contact mis à jour avec la palette Jaune/Noir -->
+                <a href="#contact" class="px-4 py-1 border-2 border-yellow-500 text-yellow-500 rounded-full hover:bg-yellow-500 hover:text-gray-900 transition duration-300 font-medium">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Section Hero -->
+    <section id="accueil" class="relative bg-gray-900 h-[60vh] flex items-center justify-center overflow-hidden">
+        <!-- Image/Video de fond stylisée (utiliser une image de placeholder pour l'exemple) -->
+        <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url('https://placehold.co/1920x800/2A2A2A/FFFFFF?text=[Image+of+Masque+Congolais]');"></div>
+        
+        <!-- Contenu du Hero -->
+        <div class="relative z-10 text-center text-white p-6 rounded-xl backdrop-blur-sm bg-black/30 mx-4">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 tracking-tight">
+                L'Âme du Congo en Sept Arts
+            </h1>
+            <p class="text-xl md:text-2xl font-light max-w-3xl mx-auto mb-8">
+                Explorez la richesse culturelle et les services professionnels offerts par nos artistes et créateurs.
+            </p>
+            <!-- Bouton Hero mis à jour avec la palette Jaune/Noir -->
+            <a href="#arts" class="inline-block bg-yellow-500 text-gray-900 text-lg font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-yellow-600 transition duration-300 transform hover:scale-105">
+                Découvrez les Couloirs d'Art
+            </a>
+        </div>
+    </section>
+
+    <!-- Section Principale : Les 7 Grands Arts (Couloirs Horizontaux) -->
+    <main id="arts" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Titre de la section principale mis à jour en Noir -->
+        <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 text-gray-900">
+            Explorez les 7 Grands Arts du Congo
+        </h2>
+
+        <!-- Données des Arts et des Services (4 services par art) -->
+        <script>
+            // Données des Arts
+            const artsData = [
+                {
+                    name: "L'Architecture",
+                    icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
+                    services: [
+                        { title: "Design de Bâtiments Modernes", desc: "Conception architecturale innovante et durable." },
+                        { title: "Consultation en Urbanisme", desc: "Planification des espaces et conseils en aménagement urbain." },
+                        { title: "Rénovation de Patrimoine", desc: "Restaurer et moderniser le bâti existant avec respect." },
+                        { title: "Modélisation et Rendu 3D", desc: "Visualisations photoréalistes de projets architecturaux." }
+                    ]
+                },
+                {
+                    name: "La Sculpture et les Arts Plastiques",
+                    icon: "M7 4v16M17 4v16M3 8h4m6 0h4M3 12h18M3 16h4m6 0h4M17 8h4",
+                    services: [
+                        { title: "Commandes de Sculptures Monumentales", desc: "Création d'œuvres uniques en bois, bronze ou pierre." },
+                        { title: "Ateliers de Modélisation 3D", desc: "Formation aux techniques modernes de sculpture numérique." },
+                        { title: "Expositions d'Art Contemporain", desc: "Organisation et curation d'événements artistiques." },
+                        { title: "Restauration d'Objets d'Art", desc: "Expertise et réparation professionnelle d'œuvres endommagées." }
+                    ]
+                },
+                {
+                    name: "La Peinture et le Dessin",
+                    icon: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
+                    services: [
+                        { title: "Portraits et Fresques Murales", desc: "Œuvres personnalisées sur toile ou grands formats." },
+                        { title: "Cours de Maître en Techniques Mixtes", desc: "Apprentissage des techniques de l'aquarelle à l'huile." },
+                        { title: "Illustration Numérique pour Médias", desc: "Création d'images pour le web, livres ou publicités." },
+                        { title: "Ventes d'Estampes et Reproductions", desc: "Tirages d'art de qualité muséale et licences d'images." }
+                    ]
+                },
+                {
+                    name: "La Musique et le Son",
+                    icon: "M9 19V6m-2.268 7.377l5.012 2.506A1 1 0 0013 16V9a1 1 0 00-.242-.668l-5.01-2.506L7 11v6",
+                    services: [
+                        { title: "Booking d'Artistes pour Événements", desc: "Trouver le talent musical parfait pour votre occasion." },
+                        { title: "Production et Mixage Studio", desc: "Services professionnels pour albums, singles ou jingles." },
+                        { title: "Composition de Bandes Originales", desc: "Musique sur mesure pour films, jeux ou spectacles." },
+                        { title: "Design Sonore pour Jeux Vidéo", desc: "Création d'effets sonores immersifs et ambiances audio." }
+                    ]
+                },
+                {
+                    name: "La Littérature et la Poésie",
+                    icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253",
+                    services: [
+                        { title: "Aide à l'Édition et Publication", desc: "Accompagnement de manuscrits jusqu'à la publication." },
+                        { title: "Ateliers d'Écriture Créative", desc: "Développez votre style, fiction, non-fiction et poésie." },
+                        { title: "Rédaction de Contenus Spécialisés", desc: "Articles, biographies et scripts professionnels." },
+                        { title: "Traduction Littéraire Certifiée", desc: "Traduction de haute qualité (français, lingala, kikongo, etc.)." }
+                    ]
+                },
+                {
+                    name: "Les Arts de la Scène (Théâtre & Danse)",
+                    icon: "M4 16l4.586-4.586a2 2 0 012.828 0L15 16m-2-4l4.586-4.586a2 2 0 012.828 0L21 12",
+                    services: [
+                        { title: "Location de Salles de Spectacles", desc: "Espaces équipés pour répétitions et représentations." },
+                        { title: "Formations en Interprétation et Chorégraphie", desc: "Cours intensifs de théâtre classique et de danses modernes/traditionnelles." },
+                        { title: "Mise en Scène Professionnelle", desc: "Direction artistique pour pièces de théâtre ou ballets." },
+                        { title: "Conception de Costumes et Décors", desc: "Création de l'environnement visuel pour les productions théâtrales." }
+                    ]
+                },
+                {
+                    name: "Le Cinéma et l'Audiovisuel",
+                    icon: "M15 10l4.55 2.275a1 1 0 010 1.45L15 16m-4-6l4.55 2.275a1 1 0 010 1.45L11 16",
+                    services: [
+                        { title: "Production de Courts et Longs Métrages", desc: "Du concept à la distribution, services de production complets." },
+                        { title: "Post-Production (Montage et Effets)", desc: "Étalonnage, mixage son et effets visuels de haute qualité." },
+                        { title: "Reportages et Films d'Entreprise", desc: "Réalisation de contenus vidéos pour la communication institutionnelle." },
+                        { title: "Drone et Prises de Vues Aériennes", desc: "Services spécialisés pour des angles de caméra uniques et spectaculaires." }
+                    ]
+                }
+            ];
+
+            // Fonction utilitaire pour générer le HTML de l'icône
+            const createIcon = (d) => `
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${d}"></path>
+                </svg>
+            `;
+
+            /**
+             * Affiche la modale de détails pour un Art donné.
+             * @param {string} artName Le nom de l'Art à afficher.
+             */
+            const showArtDetail = (artName) => {
+                const art = artsData.find(a => a.name === artName);
+                if (!art) return;
+
+                const modalTitle = document.getElementById('detail-modal-title');
+                const modalIconContainer = document.getElementById('detail-modal-icon');
+                const modalContent = document.getElementById('detail-modal-content');
+                const modal = document.getElementById('art-detail-modal');
+
+                // Mettre à jour le titre et l'icône
+                modalTitle.textContent = art.name;
+                modalIconContainer.innerHTML = createIcon(art.icon);
+
+                // Construire le contenu détaillé (les 4 blocs)
+                const detailHtml = art.services.map(service => `
+                    <div class="p-4 sm:p-6 bg-white rounded-xl shadow-inner border-l-4 border-yellow-500">
+                        <h5 class="text-xl sm:text-2xl font-bold mb-2 text-gray-900">${service.title}</h5>
+                        <p class="text-gray-700 text-base">${service.desc}</p>
+                    </div>
+                `).join(''); // Pas de séparateur car on utilise flex grid
+
+                // Utiliser une grille pour une meilleure présentation des 4 blocs
+                modalContent.innerHTML = `
+                    <p class="text-lg font-semibold text-gray-700 mb-6 border-b pb-3 border-yellow-500/50">
+                        Nos services détaillés dans le domaine de ${art.name.toLowerCase()} :
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        ${detailHtml}
+                    </div>
+                `;
+                
+                // Afficher la modale et bloquer le défilement du corps
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; 
+            };
+
+            /**
+             * Cache la modale de détails et restaure le défilement du corps.
+             */
+            const hideArtDetail = () => {
+                document.getElementById('art-detail-modal').classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+
+            // Rendre les fonctions disponibles globalement
+            window.showArtDetail = showArtDetail;
+            window.hideArtDetail = hideArtDetail;
+
+            // Fonction pour générer un couloir complet (utilise la palette Jaune/Noir)
+            const createArtCouloir = (art) => {
+                const iconHtml = createIcon(art.icon);
+                
+                // Générer les cartes avec le gestionnaire d'événement 'onclick'
+                const cardsHtml = art.services.map(s => `
+                    <div class="w-72 flex-shrink-0 bg-white p-6 rounded-xl shadow-xl transition transform hover:scale-[1.02] hover:shadow-2xl border-t-4 border-yellow-500 snap-center">
+                        <h4 class="text-xl font-bold mb-2 text-gray-900">${s.title}</h4>
+                        <p class="text-gray-600 mb-4 text-sm">${s.desc}</p>
+                        <!-- Bouton mis à jour pour appeler la modale avec le nom de l'Art -->
+                        <button onclick="showArtDetail('${art.name.replace(/'/g, "\\'")}')" class="w-full bg-yellow-500 text-gray-900 font-semibold py-2 rounded-lg hover:bg-yellow-600 transition duration-300">
+                            Détails de l'Art
+                        </button>
+                    </div>
+                `).join('');
+
+                return `
+                    <div class="mb-12">
+                        <!-- En-tête du Couloir (fond gris clair, icône sur fond noir, texte noir) -->
+                        <div class="flex items-center mb-6 p-4 bg-gray-100 rounded-xl shadow-md">
+                            <div class="p-3 rounded-full bg-gray-900 mr-4">
+                                ${iconHtml}
+                            </div>
+                            <h3 class="text-3xl font-extrabold text-gray-900">${art.name}</h3>
+                        </div>
+
+                        <!-- Couloir de Défilement Horizontal -->
+                        <div class="flex space-x-6 pb-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory">
+                            ${cardsHtml}
+                        </div>
+                    </div>
+                `;
+            };
+
+            // Conteneur où les couloirs seront insérés
+            document.addEventListener('DOMContentLoaded', () => {
+                const container = document.getElementById('arts-couloirs-container');
+                if (container) {
+                    container.innerHTML = artsData.map(createArtCouloir).join('');
+                } else {
+                    console.error("L'élément 'arts-couloirs-container' est manquant.");
+                }
+            });
+        </script>
+
+        <!-- Point d'insertion du contenu généré par JavaScript -->
+        <div id="arts-couloirs-container">
+            <!-- Les couloirs seront insérés ici par le script -->
+            <div class="text-center text-gray-500 py-10">Chargement des couloirs d'art...</div>
+        </div>
+
+    </main>
+    
+    <!-- Section Contact et Pied de Page (inchangée) -->
+    <footer id="contact" class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-8 mb-8">
+                <!-- Bloc 1: Logo et Mission -->
+                <div>
+                    <!-- Titre mis à jour en Jaune -->
+                    <h4 class="text-xl font-bold mb-4 text-yellow-500">Congo Terre de L'Art</h4>
+                    <p class="text-gray-400 text-sm">
+                        Notre mission est de connecter les talents congolais des 7 grands arts avec le monde, en offrant une plateforme de services professionnels et de promotion culturelle.
+                    </p>
+                </div>
+                <!-- Bloc 2: Liens Rapides -->
+                <div>
+                    <!-- Titre mis à jour en Jaune -->
+                    <h4 class="text-xl font-bold mb-4 text-yellow-500">Liens</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#accueil" class="hover:text-white transition duration-150">Accueil</a></li>
+                        <li><a href="#arts" class="hover:text-white transition duration-150">Les Arts</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-150">Devenir Artiste Partenaire</a></li>
+                    </ul>
+                </div>
+                <!-- Bloc 3: Contact (Numéro et ordre des réseaux sociaux mis à jour) -->
+                <div>
+                    <!-- Titre mis à jour en Jaune -->
+                    <h4 class="text-xl font-bold mb-4 text-yellow-500">Nous Contacter</h4>
+                    <p class="text-gray-400">Email: contact@congoterredelart.cd</p>
+                    <!-- Numéro de téléphone mis à jour -->
+                    <p class="text-gray-400">Téléphone: +243978415814</p>
+                    
+                    <!-- Réseaux sociaux placés en dessous -->
+                    <p class="text-gray-400 mt-4">Suivez-nous sur les réseaux sociaux :</p>
+                    <div class="flex space-x-4 mt-2">
+                        <!-- Icônes mis à jour en Jaune -->
+                        <!-- Icône Facebook -->
+                        <svg class="w-6 h-6 text-yellow-500 hover:text-white cursor-pointer transition duration-150" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.63 9.172 8.406 9.879v-7.037H7.43v-2.842h2.976V9.165c0-2.946 1.79-4.542 4.418-4.542 1.353 0 2.508.1 2.845.14v3.125h-1.848c-1.45 0-1.733.688-1.733 1.693v2.223h3.582l-.578 2.842h-3.004v7.037C18.37 21.172 22 16.991 22 12c0-5.523-4.477-10-10-10z"></path></svg>
+                        <!-- Icône Instagram -->
+                        <svg class="w-6 h-6 text-yellow-500 hover:text-white cursor-pointer transition duration-150" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c2.716 0 3.056.012 4.123.061 1.066.048 1.791.218 2.427.465.669.255 1.258.647 1.834 1.223s.968 1.165 1.223 1.832c.247.636.417 1.36.465 2.428.049 1.066.061 1.406.061 4.123s-.012 3.057-.061 4.123c-.048 1.066-.218 1.791-.465 2.427-.255.669-.647 1.258-1.223 1.834s-1.165.968-1.832 1.223c-.636.247-1.36.417-2.428.465-1.066.049-1.406.061-4.123.061s-3.057-.012-4.123-.061c-1.066-.048-1.791-.218-2.427-.465-.669-.255-1.258-.647-1.834-1.223s-.968-1.165-1.223-1.832c-.247-.636-.417-1.36-.465-2.428-.049-1.066-.061-1.406-.061-4.123s.012-3.057.061-4.123c.048-1.066.218-1.791.465-2.427.255-.669.647-1.258 1.223-1.834s1.165-.968 1.832-1.223c.636-.247 1.36-.417 2.428-.465C8.943 2.012 9.284 2 12 2zm0 3.705c-3.41 0-6.295 2.766-6.295 6.295s2.885 6.295 6.295 6.295 6.295-2.766 6.295-6.295S15.41 5.705 12 5.705zm0 10.3c-2.215 0-4-1.785-4-4s1.785-4 4-4 4 1.785 4 4-1.785 4-4 4zm6.406-11.493a1.4 1.4 0 11-2.8 0 1.4 1.4 0 012.8 0z"></path></svg>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-center text-gray-500 text-sm">
+                &copy; 2025 Congo Terre de L'Art. Tous droits réservés. | Fièrement Congolais.
+            </p>
+        </div>
+    </footer>
+
+    <!-- MODALE DE DÉTAILS DES ARTS (Nouvelle Section) -->
+    <div id="art-detail-modal" class="fixed inset-0 bg-black bg-opacity-70 hidden z-[100] flex items-center justify-center p-4" onclick="hideArtDetail()">
+        
+        <!-- Contenu de la Modale -->
+        <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 md:p-10 transform transition-all duration-300" onclick="event.stopPropagation()">
+            
+            <!-- En-tête de la Modale -->
+            <div class="flex justify-between items-start border-b pb-4 mb-6 sticky top-0 bg-white z-10">
+                <div class="flex items-center space-x-4">
+                    <div id="detail-modal-icon" class="p-3 rounded-full bg-yellow-500">
+                        <!-- L'icône sera insérée ici par JS -->
+                    </div>
+                    <h3 id="detail-modal-title" class="text-3xl font-extrabold text-gray-900">
+                        <!-- Le titre sera inséré ici par JS -->
+                    </h3>
+                </div>
+                <!-- Bouton de Fermeture -->
+                <button onclick="hideArtDetail()" class="text-gray-400 hover:text-gray-900 transition duration-150 p-2 rounded-full hover:bg-gray-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Contenu Détaillé des 4 Blocs -->
+            <div id="detail-modal-content" class="text-gray-800">
+                <!-- Les détails des 4 services seront insérés ici par JS -->
+            </div>
+
+        </div>
+    </div>
+    <!-- FIN MODALE DE DÉTAILS DES ARTS -->
+
+</body>
+</html>
