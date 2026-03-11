@@ -3,340 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Congo Terre de L'Art - Les 7 Grands Arts</title>
+    <title>Congo Stream par LeGrandArt - Le Sanctuaire des Talents</title>
     <!-- Chargement de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuration de la police Inter -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7; /* Gris clair de fond */
+            background-color: #0a0a0b;
+            color: #f0f0f0;
         }
-        /* Styles pour masquer la barre de défilement (optionnel, pour une meilleure esthétique) */
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
         .hide-scrollbar {
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glow-button {
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.3);
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 25px rgba(234, 179, 8, 0.5);
+        }
+        .safe-badge {
+            background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            border-color: #eab308;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 20px rgba(234, 179, 8, 0.2);
+        }
+        .art-overlay {
+            background: linear-gradient(to top, rgba(10, 10, 11, 1) 0%, rgba(10, 10, 11, 0) 50%, rgba(10, 10, 11, 0.4) 100%);
+        }
+        .hero-gradient {
+            background: linear-gradient(to right, #000 20%, rgba(0,0,0,0.6) 50%, transparent 100%);
         }
     </style>
 </head>
-<body class="text-gray-900">
+<body class="min-h-screen">
 
-    <!-- En-tête / Barre de Navigation Fixe -->
-    <header class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-            <!-- Logo - Couleurs Noir et Jaune -->
-            <div class="text-2xl font-extrabold text-gray-900 flex items-center">
-                <!-- Icône d'art africain stylisé -->
-                <svg class="w-6 h-6 mr-2 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.878v4.244a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                Congo <span class="text-yellow-500 ml-1">Terre de L'Art</span>
+    <!-- En-tête / Barre de Navigation -->
+    <header class="bg-black/90 backdrop-blur-xl shadow-2xl sticky top-0 z-50 border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-6 flex justify-between items-center h-20">
+            
+            <div class="flex items-center space-x-12">
+                <a href="index.html" class="flex flex-col leading-none">
+                    <span class="text-2xl md:text-3xl font-black text-white tracking-tighter">
+                        CONGO <span class="text-yellow-500">STREAM</span>
+                    </span>
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-gray-500 font-bold mt-1">L'Excellence par LeGrandArt</span>
+                </a>
+                
+                <nav class="hidden lg:flex space-x-8 text-[11px] uppercase tracking-widest font-black text-gray-400">
+                    <a href="#cinema" class="hover:text-white transition">Cinéma</a>
+                    <a href="#musique" class="hover:text-white transition">Musique</a>
+                    <a href="#arts-plastiques" class="hover:text-white transition">Arts Visuels</a>
+                    <a href="#scenique" class="hover:text-white transition">Scène</a>
+                </nav>
             </div>
-            <!-- Navigation -->
-            <nav class="hidden md:flex space-x-8">
-                <a href="#accueil" class="text-gray-600 hover:text-yellow-500 transition duration-150 font-medium">Accueil</a>
-                <a href="#arts" class="text-gray-600 hover:text-yellow-500 transition duration-150 font-medium">Les Arts</a>
-                <!-- Bouton Contact mis à jour avec la palette Jaune/Noir -->
-                <a href="#contact" class="px-4 py-1 border-2 border-yellow-500 text-yellow-500 rounded-full hover:bg-yellow-500 hover:text-gray-900 transition duration-300 font-medium">Contact</a>
-            </nav>
+            
+            <div class="flex items-center space-x-6">
+                <button onclick="toggleModal('submit-modal')" class="hidden md:flex items-center bg-yellow-500 hover:bg-yellow-400 text-black text-[11px] font-black uppercase tracking-tighter py-3 px-8 rounded-full transition-all duration-300 glow-button transform hover:scale-105">
+                    Soumettre mon Talent
+                </button>
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-500 to-yellow-200 p-[2px] cursor-pointer">
+                    <div class="w-full h-full rounded-full bg-black flex items-center justify-center">
+                        <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- Section Hero -->
-    <section id="accueil" class="relative bg-gray-900 h-[60vh] flex items-center justify-center overflow-hidden">
-        <!-- Image/Video de fond stylisée (utiliser une image de placeholder pour l'exemple) -->
-        <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url('https://placehold.co/1920x800/2A2A2A/FFFFFF?text=[Image+of+Masque+Congolais]');"></div>
+    <!-- Section Hero Cinématique -->
+    <section class="relative h-[85vh] w-full overflow-hidden">
+        <!-- Image de fond illustrative -->
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1920" class="absolute inset-0 w-full h-full object-cover" alt="Illustration Culturelle">
         
-        <!-- Contenu du Hero -->
-        <div class="relative z-10 text-center text-white p-6 rounded-xl backdrop-blur-sm bg-black/30 mx-4">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 tracking-tight">
-                L'Âme du Congo en Sept Arts
-            </h1>
-            <p class="text-xl md:text-2xl font-light max-w-3xl mx-auto mb-8">
-                Explorez la richesse culturelle et les services professionnels offerts par nos artistes et créateurs.
-            </p>
-            <!-- Bouton Hero mis à jour avec la palette Jaune/Noir -->
-            <a href="#arts" class="inline-block bg-yellow-500 text-gray-900 text-lg font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-yellow-600 transition duration-300 transform hover:scale-105">
-                Découvrez les Couloirs d'Art
-            </a>
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-transparent to-transparent"></div>
+        
+        <div class="relative max-w-[1600px] mx-auto px-6 h-full flex items-center">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center px-4 py-1 rounded-full safe-badge text-white text-[10px] font-black tracking-[0.2em] mb-8 shadow-2xl border border-emerald-400/30">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    ESPACE 100% SÉCURISÉ & ÉTHIQUE
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black mb-6 text-white leading-[0.9] tracking-tighter">
+                    L'ART QUI <br><span class="text-yellow-500 italic">ÉLÈVE L'ÂME.</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-10 leading-relaxed font-medium max-w-xl">
+                    Découvrez une sélection rigoureuse des <span class="text-white border-b-2 border-yellow-500">7 Grands Arts</span>. Ici, chaque œuvre respecte votre intégrité et célèbre la beauté sans compromis.
+                </p>
+                <div class="flex flex-wrap gap-5">
+                    <button class="bg-yellow-500 text-black font-black py-5 px-12 rounded-2xl hover:bg-yellow-400 transition transform hover:scale-105 active:scale-95 shadow-2xl flex items-center text-sm uppercase tracking-wider">
+                        <svg class="w-6 h-6 mr-3 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        Commencer l'expérience
+                    </button>
+                    <button class="bg-white/5 backdrop-blur-2xl text-white font-bold py-5 px-10 rounded-2xl hover:bg-white/10 transition border border-white/10 text-sm uppercase tracking-wider">
+                        Notre Charte
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Section Principale : Les 7 Grands Arts (Couloirs Horizontaux) -->
-    <main id="arts" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Titre de la section principale mis à jour en Noir -->
-        <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 text-gray-900">
-            Explorez les 7 Grands Arts du Congo
-        </h2>
-
-        <!-- Données des Arts et des Services (4 services par art) -->
-        <script>
-            // Données des Arts
-            const artsData = [
-                {
-                    name: "L'Architecture",
-                    icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
-                    services: [
-                        { title: "Design de Bâtiments Modernes", desc: "Conception architecturale innovante et durable." },
-                        { title: "Consultation en Urbanisme", desc: "Planification des espaces et conseils en aménagement urbain." },
-                        { title: "Rénovation de Patrimoine", desc: "Restaurer et moderniser le bâti existant avec respect." },
-                        { title: "Modélisation et Rendu 3D", desc: "Visualisations photoréalistes de projets architecturaux." }
-                    ]
-                },
-                {
-                    name: "La Sculpture et les Arts Plastiques",
-                    icon: "M7 4v16M17 4v16M3 8h4m6 0h4M3 12h18M3 16h4m6 0h4M17 8h4",
-                    services: [
-                        { title: "Commandes de Sculptures Monumentales", desc: "Création d'œuvres uniques en bois, bronze ou pierre." },
-                        { title: "Ateliers de Modélisation 3D", desc: "Formation aux techniques modernes de sculpture numérique." },
-                        { title: "Expositions d'Art Contemporain", desc: "Organisation et curation d'événements artistiques." },
-                        { title: "Restauration d'Objets d'Art", desc: "Expertise et réparation professionnelle d'œuvres endommagées." }
-                    ]
-                },
-                {
-                    name: "La Peinture et le Dessin",
-                    icon: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
-                    services: [
-                        { title: "Portraits et Fresques Murales", desc: "Œuvres personnalisées sur toile ou grands formats." },
-                        { title: "Cours de Maître en Techniques Mixtes", desc: "Apprentissage des techniques de l'aquarelle à l'huile." },
-                        { title: "Illustration Numérique pour Médias", desc: "Création d'images pour le web, livres ou publicités." },
-                        { title: "Ventes d'Estampes et Reproductions", desc: "Tirages d'art de qualité muséale et licences d'images." }
-                    ]
-                },
-                {
-                    name: "La Musique et le Son",
-                    icon: "M9 19V6m-2.268 7.377l5.012 2.506A1 1 0 0013 16V9a1 1 0 00-.242-.668l-5.01-2.506L7 11v6",
-                    services: [
-                        { title: "Booking d'Artistes pour Événements", desc: "Trouver le talent musical parfait pour votre occasion." },
-                        { title: "Production et Mixage Studio", desc: "Services professionnels pour albums, singles ou jingles." },
-                        { title: "Composition de Bandes Originales", desc: "Musique sur mesure pour films, jeux ou spectacles." },
-                        { title: "Design Sonore pour Jeux Vidéo", desc: "Création d'effets sonores immersifs et ambiances audio." }
-                    ]
-                },
-                {
-                    name: "La Littérature et la Poésie",
-                    icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253",
-                    services: [
-                        { title: "Aide à l'Édition et Publication", desc: "Accompagnement de manuscrits jusqu'à la publication." },
-                        { title: "Ateliers d'Écriture Créative", desc: "Développez votre style, fiction, non-fiction et poésie." },
-                        { title: "Rédaction de Contenus Spécialisés", desc: "Articles, biographies et scripts professionnels." },
-                        { title: "Traduction Littéraire Certifiée", desc: "Traduction de haute qualité (français, lingala, kikongo, etc.)." }
-                    ]
-                },
-                {
-                    name: "Les Arts de la Scène (Théâtre & Danse)",
-                    icon: "M4 16l4.586-4.586a2 2 0 012.828 0L15 16m-2-4l4.586-4.586a2 2 0 012.828 0L21 12",
-                    services: [
-                        { title: "Location de Salles de Spectacles", desc: "Espaces équipés pour répétitions et représentations." },
-                        { title: "Formations en Interprétation et Chorégraphie", desc: "Cours intensifs de théâtre classique et de danses modernes/traditionnelles." },
-                        { title: "Mise en Scène Professionnelle", desc: "Direction artistique pour pièces de théâtre ou ballets." },
-                        { title: "Conception de Costumes et Décors", desc: "Création de l'environnement visuel pour les productions théâtrales." }
-                    ]
-                },
-                {
-                    name: "Le Cinéma et l'Audiovisuel",
-                    icon: "M15 10l4.55 2.275a1 1 0 010 1.45L15 16m-4-6l4.55 2.275a1 1 0 010 1.45L11 16",
-                    services: [
-                        { title: "Production de Courts et Longs Métrages", desc: "Du concept à la distribution, services de production complets." },
-                        { title: "Post-Production (Montage et Effets)", desc: "Étalonnage, mixage son et effets visuels de haute qualité." },
-                        { title: "Reportages et Films d'Entreprise", desc: "Réalisation de contenus vidéos pour la communication institutionnelle." },
-                        { title: "Drone et Prises de Vues Aériennes", desc: "Services spécialisés pour des angles de caméra uniques et spectaculaires." }
-                    ]
-                }
-            ];
-
-            // Fonction utilitaire pour générer le HTML de l'icône
-            const createIcon = (d) => `
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${d}"></path>
-                </svg>
-            `;
-
-            /**
-             * Affiche la modale de détails pour un Art donné.
-             * @param {string} artName Le nom de l'Art à afficher.
-             */
-            const showArtDetail = (artName) => {
-                const art = artsData.find(a => a.name === artName);
-                if (!art) return;
-
-                const modalTitle = document.getElementById('detail-modal-title');
-                const modalIconContainer = document.getElementById('detail-modal-icon');
-                const modalContent = document.getElementById('detail-modal-content');
-                const modal = document.getElementById('art-detail-modal');
-
-                // Mettre à jour le titre et l'icône
-                modalTitle.textContent = art.name;
-                modalIconContainer.innerHTML = createIcon(art.icon);
-
-                // Construire le contenu détaillé (les 4 blocs)
-                const detailHtml = art.services.map(service => `
-                    <div class="p-4 sm:p-6 bg-white rounded-xl shadow-inner border-l-4 border-yellow-500">
-                        <h5 class="text-xl sm:text-2xl font-bold mb-2 text-gray-900">${service.title}</h5>
-                        <p class="text-gray-700 text-base">${service.desc}</p>
-                    </div>
-                `).join(''); // Pas de séparateur car on utilise flex grid
-
-                // Utiliser une grille pour une meilleure présentation des 4 blocs
-                modalContent.innerHTML = `
-                    <p class="text-lg font-semibold text-gray-700 mb-6 border-b pb-3 border-yellow-500/50">
-                        Nos services détaillés dans le domaine de ${art.name.toLowerCase()} :
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        ${detailHtml}
-                    </div>
-                `;
-                
-                // Afficher la modale et bloquer le défilement du corps
-                modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; 
-            };
-
-            /**
-             * Cache la modale de détails et restaure le défilement du corps.
-             */
-            const hideArtDetail = () => {
-                document.getElementById('art-detail-modal').classList.add('hidden');
-                document.body.style.overflow = '';
-            };
-
-            // Rendre les fonctions disponibles globalement
-            window.showArtDetail = showArtDetail;
-            window.hideArtDetail = hideArtDetail;
-
-            // Fonction pour générer un couloir complet (utilise la palette Jaune/Noir)
-            const createArtCouloir = (art) => {
-                const iconHtml = createIcon(art.icon);
-                
-                // Générer les cartes avec le gestionnaire d'événement 'onclick'
-                const cardsHtml = art.services.map(s => `
-                    <div class="w-72 flex-shrink-0 bg-white p-6 rounded-xl shadow-xl transition transform hover:scale-[1.02] hover:shadow-2xl border-t-4 border-yellow-500 snap-center">
-                        <h4 class="text-xl font-bold mb-2 text-gray-900">${s.title}</h4>
-                        <p class="text-gray-600 mb-4 text-sm">${s.desc}</p>
-                        <!-- Bouton mis à jour pour appeler la modale avec le nom de l'Art -->
-                        <button onclick="showArtDetail('${art.name.replace(/'/g, "\\'")}')" class="w-full bg-yellow-500 text-gray-900 font-semibold py-2 rounded-lg hover:bg-yellow-600 transition duration-300">
-                            Détails de l'Art
-                        </button>
-                    </div>
-                `).join('');
-
-                return `
-                    <div class="mb-12">
-                        <!-- En-tête du Couloir (fond gris clair, icône sur fond noir, texte noir) -->
-                        <div class="flex items-center mb-6 p-4 bg-gray-100 rounded-xl shadow-md">
-                            <div class="p-3 rounded-full bg-gray-900 mr-4">
-                                ${iconHtml}
-                            </div>
-                            <h3 class="text-3xl font-extrabold text-gray-900">${art.name}</h3>
-                        </div>
-
-                        <!-- Couloir de Défilement Horizontal -->
-                        <div class="flex space-x-6 pb-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory">
-                            ${cardsHtml}
-                        </div>
-                    </div>
-                `;
-            };
-
-            // Conteneur où les couloirs seront insérés
-            document.addEventListener('DOMContentLoaded', () => {
-                const container = document.getElementById('arts-couloirs-container');
-                if (container) {
-                    container.innerHTML = artsData.map(createArtCouloir).join('');
-                } else {
-                    console.error("L'élément 'arts-couloirs-container' est manquant.");
-                }
-            });
-        </script>
-
-        <!-- Point d'insertion du contenu généré par JavaScript -->
-        <div id="arts-couloirs-container">
-            <!-- Les couloirs seront insérés ici par le script -->
-            <div class="text-center text-gray-500 py-10">Chargement des couloirs d'art...</div>
+    <!-- Contenu Principal -->
+    <main class="py-20 max-w-[1600px] mx-auto px-6">
+        
+        <!-- Conteneur pour les 7 Arts avec Illustrations Thématiques -->
+        <div id="streaming-content-container" class="space-y-28">
+            <!-- Injecté dynamiquement par JS -->
         </div>
 
+        <!-- Section Prestige pour les Talents -->
+        <section class="mt-40 relative rounded-[4rem] overflow-hidden group py-24 px-10 md:px-24">
+            <img src="https://images.unsplash.com/photo-1514525253344-a8135a43c33f?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover transition duration-1000 group-hover:scale-110" alt="Scène">
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+            
+            <div class="relative z-10 max-w-2xl">
+                <span class="text-yellow-500 font-black uppercase tracking-[0.4em] text-xs mb-4 block">Appel aux Artistes</span>
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">Votre talent mérite un <span class="italic text-yellow-500">écrin de lumière.</span></h2>
+                <p class="text-gray-300 text-lg mb-12 font-medium">
+                    Rejoignez la seule plateforme qui valorise l'art noble. Que vous soyez peintre, cinéaste ou musicien, montrez votre travail dans un environnement qui respecte votre vision.
+                </p>
+                <button onclick="toggleModal('submit-modal')" class="bg-white text-black font-black py-5 px-16 rounded-2xl hover:bg-yellow-500 transition-all transform hover:scale-110 active:scale-95 shadow-3xl uppercase tracking-widest text-sm">
+                    Déposer ma candidature
+                </button>
+            </div>
+        </section>
+
     </main>
-    
-    <!-- Section Contact et Pied de Page (inchangée) -->
-    <footer id="contact" class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-8 mb-8">
-                <!-- Bloc 1: Logo et Mission -->
+
+    <!-- Modal de Soumission Ultra-Moderne -->
+    <div id="submit-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/98 backdrop-blur-xl">
+        <div class="bg-zinc-900 border border-white/10 w-full max-w-3xl rounded-[3rem] shadow-3xl p-10 md:p-16 overflow-y-auto max-h-[90vh]">
+            <div class="flex justify-between items-start mb-12">
                 <div>
-                    <!-- Titre mis à jour en Jaune -->
-                    <h4 class="text-xl font-bold mb-4 text-yellow-500">Congo Terre de L'Art</h4>
-                    <p class="text-gray-400 text-sm">
-                        Notre mission est de connecter les talents congolais des 7 grands arts avec le monde, en offrant une plateforme de services professionnels et de promotion culturelle.
-                    </p>
+                    <h3 class="text-4xl font-black text-white tracking-tighter">Devenir un Talent Congo Stream</h3>
+                    <p class="text-emerald-400 text-xs font-bold uppercase tracking-[0.3em] mt-3">Éthique • Qualité • Impact Social</p>
                 </div>
-                <!-- Bloc 2: Liens Rapides -->
-                <div>
-                    <!-- Titre mis à jour en Jaune -->
-                    <h4 class="text-xl font-bold mb-4 text-yellow-500">Liens</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#accueil" class="hover:text-white transition duration-150">Accueil</a></li>
-                        <li><a href="#arts" class="hover:text-white transition duration-150">Les Arts</a></li>
-                        <li><a href="#" class="hover:text-white transition duration-150">Devenir Artiste Partenaire</a></li>
-                    </ul>
+                <button onclick="toggleModal('submit-modal')" class="p-4 bg-white/5 rounded-full text-gray-500 hover:text-white transition hover:bg-white/10">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <form class="grid grid-cols-1 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <input type="text" class="w-full bg-black/50 border-b-2 border-white/10 py-5 px-2 text-white outline-none focus:border-yellow-500 transition placeholder:text-gray-600 font-medium" placeholder="NOM D'ARTISTE">
+                    <select class="w-full bg-black/50 border-b-2 border-white/10 py-5 px-2 text-white outline-none focus:border-yellow-500 transition font-medium">
+                        <option>CINÉMA (7e Art)</option>
+                        <option>MUSIQUE (4e Art)</option>
+                        <option>ARTS VISUELS (3e Art)</option>
+                        <option>SCÈNE (6e Art)</option>
+                        <option>LITTÉRATURE (5e Art)</option>
+                    </select>
                 </div>
-                <!-- Bloc 3: Contact (Numéro et ordre des réseaux sociaux mis à jour) -->
-                <div>
-                    <!-- Titre mis à jour en Jaune -->
-                    <h4 class="text-xl font-bold mb-4 text-yellow-500">Nous Contacter</h4>
-                    <p class="text-gray-400">Email: contact@congoterredelart.cd</p>
-                    <!-- Numéro de téléphone mis à jour -->
-                    <p class="text-gray-400">Téléphone: +243978415814</p>
-                    
-                    <!-- Réseaux sociaux placés en dessous -->
-                    <p class="text-gray-400 mt-4">Suivez-nous sur les réseaux sociaux :</p>
-                    <div class="flex space-x-4 mt-2">
-                        <!-- Icônes mis à jour en Jaune -->
-                        <!-- Icône Facebook -->
-                        <svg class="w-6 h-6 text-yellow-500 hover:text-white cursor-pointer transition duration-150" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.63 9.172 8.406 9.879v-7.037H7.43v-2.842h2.976V9.165c0-2.946 1.79-4.542 4.418-4.542 1.353 0 2.508.1 2.845.14v3.125h-1.848c-1.45 0-1.733.688-1.733 1.693v2.223h3.582l-.578 2.842h-3.004v7.037C18.37 21.172 22 16.991 22 12c0-5.523-4.477-10-10-10z"></path></svg>
-                        <!-- Icône Instagram -->
-                        <svg class="w-6 h-6 text-yellow-500 hover:text-white cursor-pointer transition duration-150" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c2.716 0 3.056.012 4.123.061 1.066.048 1.791.218 2.427.465.669.255 1.258.647 1.834 1.223s.968 1.165 1.223 1.832c.247.636.417 1.36.465 2.428.049 1.066.061 1.406.061 4.123s-.012 3.057-.061 4.123c-.048 1.066-.218 1.791-.465 2.427-.255.669-.647 1.258-1.223 1.834s-1.165.968-1.832 1.223c-.636.247-1.36.417-2.428.465-1.066.049-1.406.061-4.123.061s-3.057-.012-4.123-.061c-1.066-.048-1.791-.218-2.427-.465-.669-.255-1.258-.647-1.834-1.223s-.968-1.165-1.223-1.832c-.247-.636-.417-1.36-.465-2.428-.049-1.066-.061-1.406-.061-4.123s.012-3.057.061-4.123c.048-1.066.218-1.791.465-2.427.255-.669.647-1.258 1.223-1.834s1.165-.968 1.832-1.223c.636-.247 1.36-.417 2.428-.465C8.943 2.012 9.284 2 12 2zm0 3.705c-3.41 0-6.295 2.766-6.295 6.295s2.885 6.295 6.295 6.295 6.295-2.766 6.295-6.295S15.41 5.705 12 5.705zm0 10.3c-2.215 0-4-1.785-4-4s1.785-4 4-4 4 1.785 4 4-1.785 4-4 4zm6.406-11.493a1.4 1.4 0 11-2.8 0 1.4 1.4 0 012.8 0z"></path></svg>
-                    </div>
+                <input type="url" class="w-full bg-black/50 border-b-2 border-white/10 py-5 px-2 text-white outline-none focus:border-yellow-500 transition placeholder:text-gray-600 font-medium" placeholder="LIEN VERS VOTRE PORTFOLIO (YouTube, Behance, Drive...)">
+                <textarea class="w-full bg-black/50 border-b-2 border-white/10 py-5 px-2 text-white outline-none focus:border-yellow-500 transition h-32 placeholder:text-gray-600 font-medium resize-none" placeholder="PARLEZ-NOUS DE VOTRE MESSAGE..."></textarea>
+                
+                <div class="flex items-center space-x-5 bg-emerald-500/5 p-8 rounded-[2rem] border border-emerald-500/20">
+                    <input type="checkbox" class="w-6 h-6 rounded-full border-emerald-500 text-emerald-500 bg-black">
+                    <p class="text-xs text-emerald-100/70 leading-relaxed font-medium">Je m'engage formellement à respecter la charte de Congo Stream : pas d'immoralité, pas de violence gratuite, uniquement de l'art qui construit l'esprit.</p>
+                </div>
+                
+                <button type="button" onclick="alert('Votre talent est précieux. Nous reviendrons vers vous après étude.')" class="w-full bg-yellow-500 text-black font-black py-6 rounded-2xl hover:bg-yellow-400 transition-all shadow-2xl text-lg uppercase tracking-widest mt-4">
+                    Soumettre mon œuvre
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pied de Page de Prestige -->
+    <footer class="bg-black py-24 border-t border-white/5 mt-32">
+        <div class="max-w-[1600px] mx-auto px-6 text-center">
+            <div class="inline-block mb-12">
+                <span class="text-3xl font-black text-white">CONGO <span class="text-yellow-500">STREAM</span></span>
+                <div class="flex justify-center mt-4">
+                    <div class="w-16 h-[2px] bg-yellow-500"></div>
                 </div>
             </div>
-            
-            <p class="text-center text-gray-500 text-sm">
-                &copy; 2025 Congo Terre de L'Art. Tous droits réservés. | Fièrement Congolais.
+            <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed mb-16 font-medium">
+                Un projet visionnaire de <span class="text-white font-black">LeGrandArt</span> pour restaurer la dignité culturelle et protéger l'imaginaire des futures générations du Congo.
             </p>
+            <div class="flex flex-wrap justify-center gap-12 text-[10px] font-black uppercase tracking-[0.3em] text-gray-600">
+                <a href="#" class="hover:text-yellow-500 transition">Éthique du contenu</a>
+                <a href="#" class="hover:text-yellow-500 transition">Soutien aux créateurs</a>
+                <a href="index.html" class="text-yellow-500 hover:text-white transition flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Retour au Portail
+                </a>
+            </div>
         </div>
     </footer>
 
-    <!-- MODALE DE DÉTAILS DES ARTS (Nouvelle Section) -->
-    <div id="art-detail-modal" class="fixed inset-0 bg-black bg-opacity-70 hidden z-[100] flex items-center justify-center p-4" onclick="hideArtDetail()">
-        
-        <!-- Contenu de la Modale -->
-        <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 md:p-10 transform transition-all duration-300" onclick="event.stopPropagation()">
-            
-            <!-- En-tête de la Modale -->
-            <div class="flex justify-between items-start border-b pb-4 mb-6 sticky top-0 bg-white z-10">
-                <div class="flex items-center space-x-4">
-                    <div id="detail-modal-icon" class="p-3 rounded-full bg-yellow-500">
-                        <!-- L'icône sera insérée ici par JS -->
+    <script>
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.toggle('hidden');
+        }
+
+        // Configuration des sections avec illustrations réelles
+        const artsCategories = [
+            { 
+                id: "cinema", 
+                name: "Cinéma & Vidéo", 
+                tagline: "Le 7ème Art : La force de l'image",
+                color: "bg-red-500", 
+                items: 10,
+                illustration: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=600"
+            },
+            { 
+                id: "musique", 
+                name: "Musique & Chant", 
+                tagline: "Le 4ème Art : L'harmonie des cœurs",
+                color: "bg-purple-500", 
+                items: 10,
+                illustration: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=600"
+            },
+            { 
+                id: "arts-plastiques", 
+                name: "Arts Visuels", 
+                tagline: "Peinture, Sculpture & Architecture",
+                color: "bg-yellow-500", 
+                items: 10,
+                illustration: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80&w=600"
+            },
+            { 
+                id: "scenique", 
+                name: "Scène & Danse", 
+                tagline: "Le 6ème Art : L'expression du corps",
+                color: "bg-blue-500", 
+                items: 10,
+                illustration: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=600"
+            }
+        ];
+
+        const generateCards = (category) => {
+            let cards = "";
+            for(let i=1; i<=category.items; i++) {
+                cards += `
+                    <div class="w-56 md:w-72 flex-shrink-0 cursor-pointer snap-start group card-hover bg-zinc-900 border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-500 shadow-2xl relative">
+                        <div class="relative aspect-[2/3]">
+                            <!-- Image avec effet de zoom au survol -->
+                            <img src="${category.illustration}&sig=${category.id}${i}" 
+                                 class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                            
+                            <!-- Overlay noir dégradé -->
+                            <div class="absolute inset-0 art-overlay transition-opacity duration-500 group-hover:opacity-40"></div>
+                            
+                            <!-- Badges flottants -->
+                            <div class="absolute top-4 left-4 flex flex-col space-y-2">
+                                <span class="bg-black/60 backdrop-blur-md text-[8px] text-white font-black px-3 py-1.5 rounded-full uppercase tracking-widest border border-white/10">TALENT #${i}</span>
+                                <span class="bg-emerald-500/90 text-[8px] text-black font-black px-3 py-1.5 rounded-full uppercase tracking-widest">Safe Content</span>
+                            </div>
+
+                            <!-- Informations détaillées en bas -->
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <p class="text-yellow-500 text-[9px] font-black uppercase tracking-[0.2em] mb-2">LeGrandArt Selection</p>
+                                <h4 class="text-lg font-black text-white group-hover:text-yellow-500 transition duration-300 leading-tight">Chef d'œuvre du Talent #${i}</h4>
+                                <div class="flex items-center mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <span class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Regarder • 12 min</span>
+                                </div>
+                            </div>
+
+                            <!-- Bouton de lecture central ultra-moderne -->
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-50 group-hover:scale-100">
+                                <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center text-black shadow-[0_0_50px_rgba(234,179,8,0.5)]">
+                                    <svg class="w-10 h-10 fill-current translate-x-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 id="detail-modal-title" class="text-3xl font-extrabold text-gray-900">
-                        <!-- Le titre sera inséré ici par JS -->
-                    </h3>
-                </div>
-                <!-- Bouton de Fermeture -->
-                <button onclick="hideArtDetail()" class="text-gray-400 hover:text-gray-900 transition duration-150 p-2 rounded-full hover:bg-gray-100">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
+                `;
+            }
+            return cards;
+        };
 
-            <!-- Contenu Détaillé des 4 Blocs -->
-            <div id="detail-modal-content" class="text-gray-800">
-                <!-- Les détails des 4 services seront insérés ici par JS -->
-            </div>
+        const renderSections = () => {
+            const container = document.getElementById('streaming-content-container');
+            container.innerHTML = artsCategories.map(cat => `
+                <section id="${cat.id}">
+                    <div class="flex items-end justify-between mb-10 px-2">
+                        <div class="flex flex-col">
+                            <div class="flex items-center space-x-4 mb-2">
+                                <div class="w-1.5 h-6 ${cat.color} rounded-full"></div>
+                                <h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter">${cat.name}</h2>
+                            </div>
+                            <p class="text-gray-500 text-xs md:text-sm font-medium tracking-wide ml-6">${cat.tagline}</p>
+                        </div>
+                        <a href="#" class="hidden sm:block text-[10px] font-black text-gray-400 hover:text-yellow-500 uppercase tracking-[0.3em] transition-all pb-1">Explorer la galerie &rarr;</a>
+                    </div>
+                    <div class="flex space-x-8 pb-10 overflow-x-auto hide-scrollbar snap-x snap-mandatory px-2">
+                        ${generateCards(cat)}
+                    </div>
+                </section>
+            `).join('');
+        };
 
-        </div>
-    </div>
-    <!-- FIN MODALE DE DÉTAILS DES ARTS -->
-
+        window.onload = renderSections;
+    </script>
 </body>
 </html>
