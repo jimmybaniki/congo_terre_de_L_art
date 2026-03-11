@@ -38,7 +38,20 @@
             background: linear-gradient(to top, rgba(10, 10, 11, 1) 0%, rgba(10, 10, 11, 0) 50%, rgba(10, 10, 11, 0.4) 100%);
         }
         .hero-gradient {
-            background: linear-gradient(to right, #000 20%, rgba(0,0,0,0.6) 50%, transparent 100%);
+            background: linear-gradient(to right, #000 30%, rgba(0,0,0,0.5) 60%, transparent 100%);
+        }
+        /* Style pour la vidéo en arrière-plan */
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -1;
         }
     </style>
 </head>
@@ -57,10 +70,9 @@
                 </a>
                 
                 <nav class="hidden lg:flex space-x-8 text-[11px] uppercase tracking-widest font-black text-gray-400">
-                    <a href="#cinema" class="hover:text-white transition">Cinéma</a>
-                    <a href="#musique" class="hover:text-white transition">Musique</a>
-                    <a href="#arts-plastiques" class="hover:text-white transition">Arts Visuels</a>
-                    <a href="#scenique" class="hover:text-white transition">Scène</a>
+                    <a href="#cinema" class="hover:text-white transition">Cinéma & Vidéo</a>
+                    <a href="#musique" class="hover:text-white transition">Musique & Chant</a>
+                    <a href="#arts-plastiques" class="hover:text-white transition">Arts Plastiques</a>
                 </nav>
             </div>
             
@@ -77,33 +89,37 @@
         </div>
     </header>
 
-    <!-- Section Hero Cinématique -->
+    <!-- Section Hero Cinématique avec Vidéo -->
     <section class="relative h-[85vh] w-full overflow-hidden">
-        <!-- Image de fond illustrative -->
-        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1920" class="absolute inset-0 w-full h-full object-cover" alt="Illustration Culturelle">
+        <!-- Vidéo en arrière-plan -->
+        <video autoplay muted loop playsinline class="video-background">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-african-woman-smiling-and-looking-at-camera-34533-large.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo.
+        </video>
         
+        <!-- Overlays pour la lisibilité -->
         <div class="absolute inset-0 hero-gradient"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-transparent to-transparent"></div>
         
         <div class="relative max-w-[1600px] mx-auto px-6 h-full flex items-center">
-            <div class="max-w-2xl">
+            <div class="max-w-3xl">
                 <div class="inline-flex items-center px-4 py-1 rounded-full safe-badge text-white text-[10px] font-black tracking-[0.2em] mb-8 shadow-2xl border border-emerald-400/30">
                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                    ESPACE 100% SÉCURISÉ & ÉTHIQUE
+                    POUR TOUT CE QUI EST VERTUEUX ET AIMABLE
                 </div>
-                <h1 class="text-6xl md:text-8xl font-black mb-6 text-white leading-[0.9] tracking-tighter">
-                    L'ART QUI <br><span class="text-yellow-500 italic">ÉLÈVE L'ÂME.</span>
+                <h1 class="text-5xl md:text-7xl font-black mb-8 text-white leading-[1.1] tracking-tighter">
+                    L'ART QUI RÉVÈLE <br><span class="text-yellow-500 italic">LA LUMIÈRE EN NOUS.</span>
                 </h1>
-                <p class="text-xl text-gray-300 mb-10 leading-relaxed font-medium max-w-xl">
-                    Découvrez une sélection rigoureuse des <span class="text-white border-b-2 border-yellow-500">7 Grands Arts</span>. Ici, chaque œuvre respecte votre intégrité et célèbre la beauté sans compromis.
+                <p class="text-xl text-gray-300 mb-12 leading-relaxed font-medium max-w-2xl">
+                    Plongez dans un espace de créativité où les <span class="text-white border-b-2 border-yellow-500">7 Grands Arts</span> sont célébrés pour leur capacité à édifier. Ici, chaque œuvre respecte votre intégrité, honore la dignité humaine et cultive une beauté qui inspire l'excellence.
                 </p>
                 <div class="flex flex-wrap gap-5">
                     <button class="bg-yellow-500 text-black font-black py-5 px-12 rounded-2xl hover:bg-yellow-400 transition transform hover:scale-105 active:scale-95 shadow-2xl flex items-center text-sm uppercase tracking-wider">
                         <svg class="w-6 h-6 mr-3 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        Commencer l'expérience
+                        Chercher l'Inspiration
                     </button>
                     <button class="bg-white/5 backdrop-blur-2xl text-white font-bold py-5 px-10 rounded-2xl hover:bg-white/10 transition border border-white/10 text-sm uppercase tracking-wider">
-                        Notre Charte
+                        Notre Charte de Qualité
                     </button>
                 </div>
             </div>
@@ -113,37 +129,36 @@
     <!-- Contenu Principal -->
     <main class="py-20 max-w-[1600px] mx-auto px-6">
         
-        <!-- Conteneur pour les 7 Arts avec Illustrations Thématiques -->
         <div id="streaming-content-container" class="space-y-28">
             <!-- Injecté dynamiquement par JS -->
         </div>
 
-        <!-- Section Prestige pour les Talents -->
-        <section class="mt-40 relative rounded-[4rem] overflow-hidden group py-24 px-10 md:px-24">
-            <img src="https://images.unsplash.com/photo-1514525253344-a8135a43c33f?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover transition duration-1000 group-hover:scale-110" alt="Scène">
-            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+        <!-- Section Appel aux Créateurs -->
+        <section class="mt-40 relative rounded-[4rem] overflow-hidden group py-24 px-10 md:px-24 border border-white/5">
+            <img src="https://images.unsplash.com/photo-1514525253344-a8135a43c33f?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover opacity-60 transition duration-1000 group-hover:scale-110" alt="Scène Inspiration">
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-transparent"></div>
             
             <div class="relative z-10 max-w-2xl">
-                <span class="text-yellow-500 font-black uppercase tracking-[0.4em] text-xs mb-4 block">Appel aux Artistes</span>
-                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">Votre talent mérite un <span class="italic text-yellow-500">écrin de lumière.</span></h2>
+                <span class="text-yellow-500 font-black uppercase tracking-[0.4em] text-xs mb-4 block">Gérance des Dons</span>
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">Consacrez vos talents à <span class="italic text-yellow-500">élever le monde.</span></h2>
                 <p class="text-gray-300 text-lg mb-12 font-medium">
-                    Rejoignez la seule plateforme qui valorise l'art noble. Que vous soyez peintre, cinéaste ou musicien, montrez votre travail dans un environnement qui respecte votre vision.
+                    Votre créativité est un don précieux. Devenez un phare pour la jeunesse en partageant des œuvres qui inspirent l'espoir, la bonté et le progrès.
                 </p>
                 <button onclick="toggleModal('submit-modal')" class="bg-white text-black font-black py-5 px-16 rounded-2xl hover:bg-yellow-500 transition-all transform hover:scale-110 active:scale-95 shadow-3xl uppercase tracking-widest text-sm">
-                    Déposer ma candidature
+                    Soumettre mon Talent
                 </button>
             </div>
         </section>
 
     </main>
 
-    <!-- Modal de Soumission Ultra-Moderne -->
+    <!-- Modal de Soumission -->
     <div id="submit-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/98 backdrop-blur-xl">
         <div class="bg-zinc-900 border border-white/10 w-full max-w-3xl rounded-[3rem] shadow-3xl p-10 md:p-16 overflow-y-auto max-h-[90vh]">
             <div class="flex justify-between items-start mb-12">
                 <div>
-                    <h3 class="text-4xl font-black text-white tracking-tighter">Devenir un Talent Congo Stream</h3>
-                    <p class="text-emerald-400 text-xs font-bold uppercase tracking-[0.3em] mt-3">Éthique • Qualité • Impact Social</p>
+                    <h3 class="text-4xl font-black text-white tracking-tighter">Édifier par l'Art</h3>
+                    <p class="text-emerald-400 text-xs font-bold uppercase tracking-[0.3em] mt-3">Pureté • Excellence • Inspiration Noble</p>
                 </div>
                 <button onclick="toggleModal('submit-modal')" class="p-4 bg-white/5 rounded-full text-gray-500 hover:text-white transition hover:bg-white/10">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -151,48 +166,38 @@
             </div>
             <form class="grid grid-cols-1 gap-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <input type="text" class="w-full bg-black/50 border-b-2 border-white/10 py-5 px-2 text-white outline-none focus:border-yellow-500 transition placeholder:text-gray-600 font-medium" placeholder="NOM D'ARTISTE">
+                    <input type="text" class="w-full bg-black/50 border-b-2 border-white/10 py-5 px-2 text-white outline-none focus:border-yellow-500 transition placeholder:text-gray-600 font-medium" placeholder="NOM OU PSEUDONYME">
                     <select class="w-full bg-black/50 border-b-2 border-white/10 py-5 px-2 text-white outline-none focus:border-yellow-500 transition font-medium">
-                        <option>CINÉMA (7e Art)</option>
-                        <option>MUSIQUE (4e Art)</option>
-                        <option>ARTS VISUELS (3e Art)</option>
-                        <option>SCÈNE (6e Art)</option>
-                        <option>LITTÉRATURE (5e Art)</option>
+                        <option>CINÉMA & VIDÉO</option>
+                        <option>MUSIQUE & CHANT</option>
+                        <option>ARTS PLASTIQUES</option>
+                        <option>LITTÉRATURE</option>
                     </select>
                 </div>
-                <input type="url" class="w-full bg-black/50 border-b-2 border-white/10 py-5 px-2 text-white outline-none focus:border-yellow-500 transition placeholder:text-gray-600 font-medium" placeholder="LIEN VERS VOTRE PORTFOLIO (YouTube, Behance, Drive...)">
-                <textarea class="w-full bg-black/50 border-b-2 border-white/10 py-5 px-2 text-white outline-none focus:border-yellow-500 transition h-32 placeholder:text-gray-600 font-medium resize-none" placeholder="PARLEZ-NOUS DE VOTRE MESSAGE..."></textarea>
+                <input type="url" class="w-full bg-black/50 border-b-2 border-white/10 py-5 px-2 text-white outline-none focus:border-yellow-500 transition placeholder:text-gray-600 font-medium" placeholder="LIEN VERS L'ŒUVRE">
                 
                 <div class="flex items-center space-x-5 bg-emerald-500/5 p-8 rounded-[2rem] border border-emerald-500/20">
                     <input type="checkbox" class="w-6 h-6 rounded-full border-emerald-500 text-emerald-500 bg-black">
-                    <p class="text-xs text-emerald-100/70 leading-relaxed font-medium">Je m'engage formellement à respecter la charte de Congo Stream : pas d'immoralité, pas de violence gratuite, uniquement de l'art qui construit l'esprit.</p>
+                    <p class="text-xs text-emerald-100/70 leading-relaxed font-medium">Je certifie que mon œuvre respecte les standards de décence et vise à apporter une influence positive et édifiante à ceux qui la découvriront.</p>
                 </div>
                 
-                <button type="button" onclick="alert('Votre talent est précieux. Nous reviendrons vers vous après étude.')" class="w-full bg-yellow-500 text-black font-black py-6 rounded-2xl hover:bg-yellow-400 transition-all shadow-2xl text-lg uppercase tracking-widest mt-4">
+                <button type="button" onclick="alert('Merci pour votre contribution. Nous examinerons votre œuvre avec soin.')" class="w-full bg-yellow-500 text-black font-black py-6 rounded-2xl hover:bg-yellow-400 transition-all shadow-2xl text-lg uppercase tracking-widest mt-4">
                     Soumettre mon œuvre
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- Pied de Page de Prestige -->
-    <footer class="bg-black py-24 border-t border-white/5 mt-32">
-        <div class="max-w-[1600px] mx-auto px-6 text-center">
-            <div class="inline-block mb-12">
-                <span class="text-3xl font-black text-white">CONGO <span class="text-yellow-500">STREAM</span></span>
-                <div class="flex justify-center mt-4">
-                    <div class="w-16 h-[2px] bg-yellow-500"></div>
-                </div>
-            </div>
-            <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed mb-16 font-medium">
-                Un projet visionnaire de <span class="text-white font-black">LeGrandArt</span> pour restaurer la dignité culturelle et protéger l'imaginaire des futures générations du Congo.
+    <footer class="bg-black py-24 border-t border-white/5 mt-32 text-center">
+        <div class="max-w-[1600px] mx-auto px-6">
+            <span class="text-3xl font-black text-white">CONGO <span class="text-yellow-500">STREAM</span></span>
+            <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed mt-8 mb-16 font-medium">
+                « Si nous cherchons ce qui est vertueux et aimable, nous élevons nos familles et notre nation. » — Une initiative LeGrandArt.
             </p>
             <div class="flex flex-wrap justify-center gap-12 text-[10px] font-black uppercase tracking-[0.3em] text-gray-600">
-                <a href="#" class="hover:text-yellow-500 transition">Éthique du contenu</a>
-                <a href="#" class="hover:text-yellow-500 transition">Soutien aux créateurs</a>
                 <a href="index.html" class="text-yellow-500 hover:text-white transition flex items-center">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                    Retour au Portail
+                    RETOUR AU PORTAIL
                 </a>
             </div>
         </div>
@@ -204,12 +209,11 @@
             modal.classList.toggle('hidden');
         }
 
-        // Configuration des sections avec illustrations réelles
         const artsCategories = [
             { 
                 id: "cinema", 
                 name: "Cinéma & Vidéo", 
-                tagline: "Le 7ème Art : La force de l'image",
+                tagline: "Histoires qui fortifient les liens et inspirent la bonté",
                 color: "bg-red-500", 
                 items: 10,
                 illustration: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=600"
@@ -217,26 +221,18 @@
             { 
                 id: "musique", 
                 name: "Musique & Chant", 
-                tagline: "Le 4ème Art : L'harmonie des cœurs",
+                tagline: "Mélodies qui invitent la paix et la joie",
                 color: "bg-purple-500", 
                 items: 10,
                 illustration: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=600"
             },
             { 
                 id: "arts-plastiques", 
-                name: "Arts Visuels", 
-                tagline: "Peinture, Sculpture & Architecture",
+                name: "Arts Plastiques", 
+                tagline: "Beauté visuelle célébrant la vie et la création",
                 color: "bg-yellow-500", 
                 items: 10,
                 illustration: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80&w=600"
-            },
-            { 
-                id: "scenique", 
-                name: "Scène & Danse", 
-                tagline: "Le 6ème Art : L'expression du corps",
-                color: "bg-blue-500", 
-                items: 10,
-                illustration: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=600"
             }
         ];
 
@@ -246,31 +242,18 @@
                 cards += `
                     <div class="w-56 md:w-72 flex-shrink-0 cursor-pointer snap-start group card-hover bg-zinc-900 border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-500 shadow-2xl relative">
                         <div class="relative aspect-[2/3]">
-                            <!-- Image avec effet de zoom au survol -->
                             <img src="${category.illustration}&sig=${category.id}${i}" 
                                  class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                            
-                            <!-- Overlay noir dégradé -->
                             <div class="absolute inset-0 art-overlay transition-opacity duration-500 group-hover:opacity-40"></div>
-                            
-                            <!-- Badges flottants -->
                             <div class="absolute top-4 left-4 flex flex-col space-y-2">
-                                <span class="bg-black/60 backdrop-blur-md text-[8px] text-white font-black px-3 py-1.5 rounded-full uppercase tracking-widest border border-white/10">TALENT #${i}</span>
-                                <span class="bg-emerald-500/90 text-[8px] text-black font-black px-3 py-1.5 rounded-full uppercase tracking-widest">Safe Content</span>
+                                <span class="bg-emerald-500/90 text-[8px] text-black font-black px-3 py-1.5 rounded-full uppercase tracking-widest">Édifiant</span>
                             </div>
-
-                            <!-- Informations détaillées en bas -->
                             <div class="absolute bottom-6 left-6 right-6">
-                                <p class="text-yellow-500 text-[9px] font-black uppercase tracking-[0.2em] mb-2">LeGrandArt Selection</p>
-                                <h4 class="text-lg font-black text-white group-hover:text-yellow-500 transition duration-300 leading-tight">Chef d'œuvre du Talent #${i}</h4>
-                                <div class="flex items-center mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <span class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Regarder • 12 min</span>
-                                </div>
+                                <p class="text-yellow-500 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Sélection Noble</p>
+                                <h4 class="text-lg font-black text-white group-hover:text-yellow-500 transition duration-300 leading-tight">${category.name} #${i}</h4>
                             </div>
-
-                            <!-- Bouton de lecture central ultra-moderne -->
                             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-50 group-hover:scale-100">
-                                <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center text-black shadow-[0_0_50px_rgba(234,179,8,0.5)]">
+                                <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center text-black">
                                     <svg class="w-10 h-10 fill-current translate-x-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 </div>
                             </div>
@@ -283,23 +266,24 @@
 
         const renderSections = () => {
             const container = document.getElementById('streaming-content-container');
-            container.innerHTML = artsCategories.map(cat => `
-                <section id="${cat.id}">
-                    <div class="flex items-end justify-between mb-10 px-2">
-                        <div class="flex flex-col">
-                            <div class="flex items-center space-x-4 mb-2">
-                                <div class="w-1.5 h-6 ${cat.color} rounded-full"></div>
-                                <h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter">${cat.name}</h2>
+            if (container) {
+                container.innerHTML = artsCategories.map(cat => `
+                    <section id="${cat.id}">
+                        <div class="flex items-end justify-between mb-10 px-2">
+                            <div class="flex flex-col">
+                                <div class="flex items-center space-x-4 mb-2">
+                                    <div class="w-1.5 h-6 ${cat.color} rounded-full"></div>
+                                    <h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter">${cat.name}</h2>
+                                </div>
+                                <p class="text-gray-500 text-xs md:text-sm font-medium tracking-wide ml-6">${cat.tagline}</p>
                             </div>
-                            <p class="text-gray-500 text-xs md:text-sm font-medium tracking-wide ml-6">${cat.tagline}</p>
                         </div>
-                        <a href="#" class="hidden sm:block text-[10px] font-black text-gray-400 hover:text-yellow-500 uppercase tracking-[0.3em] transition-all pb-1">Explorer la galerie &rarr;</a>
-                    </div>
-                    <div class="flex space-x-8 pb-10 overflow-x-auto hide-scrollbar snap-x snap-mandatory px-2">
-                        ${generateCards(cat)}
-                    </div>
-                </section>
-            `).join('');
+                        <div class="flex space-x-8 pb-10 overflow-x-auto hide-scrollbar snap-x snap-mandatory px-2">
+                            ${generateCards(cat)}
+                        </div>
+                    </section>
+                `).join('');
+            }
         };
 
         window.onload = renderSections;
